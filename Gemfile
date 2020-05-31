@@ -28,6 +28,7 @@ gem 'clearance', '~> 1.15'
 gem 'solargraph', '~> 0.39'
 gem 'htmlbeautifier'
 gem 'bootstrap-select-rails'
+gem "aws-sdk-s3", require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
