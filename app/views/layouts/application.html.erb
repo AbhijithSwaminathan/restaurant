@@ -30,7 +30,7 @@
               <%= link_to "Workers", worker_index_path, class: "nav-link"%>
             </li>
           </ul>
-          <ul class="nav navbar navbar-expand-lg navbar-right navbar-dark bg-dark">
+          <ul class="nav navbar navbar-nav navbar-expand-lg navbar-right navbar-dark bg-dark">
             <% if signed_in? %>
               <li class="nav-item">
                 <a class="nav-link">
@@ -42,9 +42,7 @@
               </li>
             <% else %>
               <li class="nav-item">
-                <a class="nav-link">
-                  <%= link_to t(".sign_in"), sign_in_path %>
-                </a>
+                <%= link_to t(".sign_in"), sign_in_path, class:'nav-link' %>
               </li>
             <% end %>
           </ul>
