@@ -1,23 +1,56 @@
-<h1>Edit Items</h1>
-<%= form_for :item, url: item_path(@item), method: :patch do |f| %>
-  <% if @item.errors.any? %>
-    <% @item.errors.full_messages.each do |msg| %>
-      <div class='alert alert-danger'><%= msg %></div>
+<div class="container">
+  <div class=" text-center mt-5 ">
+    <h1>Add an item</h1>
+  </div>
+  <%= form_for :item, url: item_path(@item), method: :patch do |f| %>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages.each do |msg| %>
+        <div class='alert alert-danger'><%= msg %></div>
+      <% end %>
     <% end %>
-  <% end %>
-  <p>
-    <%= f.label :name%><br>
-    <%= f.text_field :name, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :qty%><br>
-    <%= f.text_field :qty, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :price%><br>
-    <%= f.text_field :price, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.submit class: 'btn btn-primary' %>
-  </p>
-<% end %>
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+          <div class="card-body bg-light">
+            <div class="container">
+              <form id="contact-form" role="form">
+                <div class="controls">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group"> <%= f.label :name%>
+                        <%= f.text_field :name, class: 'form-control', placeholder: "Enter Item Name"%>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :qty%>
+                        <%= f.text_field :qty, class: 'form-control', placeholder: "Enter Quantity"%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :price%><br>
+                        <%= f.text_field :price, class: 'form-control', placeholder:"Enter Price"%>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= f.submit class: 'btn btn-primary btn-send pt-2 btn-block' %>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.8 -->
+        </div>
+        <!-- /.row-->
+      </div>
+    </div>
+  <%end%>
+</div>

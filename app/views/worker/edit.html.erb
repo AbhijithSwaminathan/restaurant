@@ -1,35 +1,73 @@
-<h1>Edit Worker</h1>
-<%= form_for :worker, url: worker_path(@worker), method: :patch do |f| %>
-  <% if @worker.errors.any? %>
-    <% @worker.errors.full_messages.each do |msg| %>
-      <div class='alert alert-danger'><%= msg %></div>
+<div class="container">
+  <div class=" text-center mt-5 ">
+    <h1>Add a worker</h1>
+  </div>
+  <%= form_for :worker, url: worker_path(@worker), method: :patch do |f| %>
+    <% if @worker.errors.any? %>
+      <% @worker.errors.full_messages.each do |msg| %>
+        <div class='alert alert-danger'><%= msg %></div>
+      <% end %>
     <% end %>
-  <% end %>
-  <p>
-    <%= f.label :name%><br>
-    <%= f.text_field :name, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :age%><br>
-    <%= f.text_field :age, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :address%><br>
-    <%= f.text_field :address, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :gender%><br>
-    <%= f.select :gender,['Male', 'Female'], class: 'form form-group form-control'%>
-  </p>
-  <p>
-    <%= f.label :role%><br>
-    <%= f.text_field :role, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :wage%><br>
-    <%= f.text_field :wage, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.submit class: 'btn btn-primary' %>
-  </p>
-<% end %>
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+          <div class="card-body bg-light">
+            <div class="container">
+              <form id="contact-form" role="form">
+                <div class="controls">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :name%>
+                        <%= f.text_field :name, class: 'form-control', placeholder:"Enter name"%>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :age%>
+                        <%= f.text_field :age, class: 'form-control',placeholder:"Enter age"%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :role%>
+                        <%= f.text_field :role, class: 'form-control', placeholder:"Enter Role"%>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :wage%>
+                        <%= f.text_field :wage, class: 'form-control',placeholder:"Enter wage"%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :address%>
+                        <%= f.text_field :address, class: 'form-control', placeholder:"Enter address"%>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :gender%>
+                        <%= f.select(:gender, ['Male','Female'], {include_blank: "Select gender"}, { :class => 'form-control' }) %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <%= f.submit class: 'btn btn-primary btn-send pt-2 btn-block' %>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- /.8 -->
+      </div>
+      <!-- /.row-->
+    </div>
+  <%end%>
+</div>

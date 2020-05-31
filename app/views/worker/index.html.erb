@@ -1,11 +1,27 @@
-<%= link_to "Add Worker", new_worker_path%>
-<h1>Workers</h1>
-<% @workers.each do |worker| %>
-  <div class="well">
-    <h2><%= worker.name %></h2>
-    <h4><%= worker.gender %></h4>
-    <h5><%= worker.role %></h5>
-    <h5><%= worker.wage %></h5>
-    <%= link_to "Details", worker_path(worker), class: 'btn'%>
+<div class="d-flex justify-content-between">
+  <h2 class="display-4 p-4">Workers </h2>
+  <div class="p-4">
+    <%= link_to "Add Worker",new_worker_path,class: 'btn btn-primary p-4'%>
   </div>
-<% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <% @workers.each do |worker| %>
+      <div class="col-lg-4 d-flex align-items-stretch">
+        <div class="card mb-4" style="width: 18rem;">
+          <div class="card-body">
+            <% if worker.gender == 'Male'%>
+              <%= image_tag('male.png' , class:"card-img-top" )%>
+            <%else%>
+              <%= image_tag('female.png' , class:"card-img-top" )%>
+            <%end%>
+            <h4 class="card-title p-1"><%= worker.name %></h5>
+            <h5 class="display-6 m-2">₹<%= worker.wage %> </h5>
+            <p class="card-text m-2"><%= worker.role %></p>
+            <%= link_to "Details", worker_path(worker), class: 'btn btn-primary '%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

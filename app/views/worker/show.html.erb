@@ -1,9 +1,17 @@
-<h2><%= @workers.name %></h2>
-<h4><%= @workers.age %></h4>
-<h4><%= @workers.gender %></h4>
-<h5><%= @workers.role %></h5>
-<h5><%= @workers.wage %></h5>
-<p><%= @workers.address %></p>
-<hr>
-<%= link_to "Edit", edit_worker_path(@workers), class:'btn btn-default'%>
-<%= link_to "Delete", worker_path(@workers),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+<div class="container m-4">
+  <div class="card mb-4" style="width: 18rem;">
+    <div class="card-body">
+      <% if @workers.gender == 'Male'%>
+        <%= image_tag('male.png' , class:"card-img-top" )%>
+      <%else%>
+        <%= image_tag('female.png' , class:"card-img-top" )%>
+      <%end%>
+      <h4 class="card-title p-1"><%= @workers.name %></h5>
+      <h5 class="display-6 m-2">₹<%= @workers.wage %> </h5>
+      <p class="card-text m-2"><%= @workers.role %></p>
+      <p class="card-text m-2"><%= @workers.address %></p>
+      <%= link_to "Edit", edit_worker_path(@workers), class:'btn btn-primary'%>
+      <%= link_to "Delete", worker_path(@workers),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+    </div>
+  </div>
+</div>
