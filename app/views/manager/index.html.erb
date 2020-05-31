@@ -1,13 +1,26 @@
-<h1>Dishes</h1>
+<div class="container">
+  <h2 class="display-4 p-4">Menu </h2>
+</div>
 <% @cat.each do |cat| %>
-  <h2><%= cat%> </h2>
-  <% @dishes.each do |dish| %>
-    <% if dish.isavailable? %>
-      <% if dish.category == cat %>
-        <h3> <%= dish.name %></h3>
-        <h4><%= dish.price %></h4>
-        <p><%= dish.description %></p>
-      <%end%>
-    <%end%>
-  <% end %>
+  <div class="jumbotron">
+    <h2 class="display-4"><%= cat%> </h2>
+    <div class="row">
+      <% @dishes.each do |dish| %>
+        <% if dish.isavailable? %>
+          <% if dish.category == cat %>
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="card" style="width: 18rem;">
+                <%= image_tag((dish.image) , class:"card-img-top" )%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= dish.name %></h5>
+                  <p class="card-text"><%= dish.description %></p>
+                  <h5 class="display-6 m-2">₹<%= dish.price%> </h5>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
+      <% end %>
+    </div>
+  </div>
 <% end %>

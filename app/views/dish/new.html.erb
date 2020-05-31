@@ -1,31 +1,57 @@
-<h1>Add Dishes</h1>
-<%= form_for :dish, url: dish_index_path do |f| %>
-  <% if @dish.errors.any? %>
-    <% @dish.errors.full_messages.each do |msg| %>
-      <div class='alert alert-danger'><%= msg %></div>
+<div class="container">
+  <div class=" text-center mt-5 ">
+    <h1>Add a dish</h1>
+  </div>
+  <%= form_for :dish, url: dish_index_path do |f| %>
+    <% if @dish.errors.any? %>
+      <% @dish.errors.full_messages.each do |msg| %>
+        <div class='alert alert-danger'><%= msg %></div>
+      <% end %>
     <% end %>
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+          <div class="card-body bg-light">
+            <div class="container">
+              <form id="contact-form" role="form">
+                <div class="controls">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group"> <%= f.label :name%>
+                        <%= f.text_field :name, class: 'form-control', placeholder:'Enter dish name'%>  </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group"> <%= f.label :price%>
+                        <%= f.text_field :price, class: 'form-control', placeholder:'Enter dish price.'%> </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group"><%= f.label :category%>
+                        <%= f.select(:category, @cat, {include_blank: "Select something"}, { :class => 'form-control' }) %>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <%= f.label :image%>
+                      <%= f.file_field :image, class:'form-control'%>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group"> <%= f.label :description%>
+                        <%= f.text_area :description, class: 'form-control'%>
+                      </div>
+                    </div>
+                    <div class="col-md-12"> <%= f.submit class:  'btn btn-success btn-send pt-2 btn-block' %> </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- /.8 -->
+      </div>
+      <!-- /.row-->
+    </div>
   <% end %>
-  <p>
-    <%= f.label :name%><br>
-    <%= f.text_field :name, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :price%><br>
-    <%= f.text_field :price, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :description%><br>
-    <%= f.text_field :description, class: 'form-control'%>
-  </p>
-  <p>
-    <%= f.label :image%>
-    <%= f.file_field :image%>
-  </p>
-  <p>
-    <%= f.label :category%><br>
-    <%= f.select :category, @cat%>
-  </p>
-  <p>
-    <%= f.submit class:  'btn btn-primary' %>
-  </p>
-<% end %>
+</div>

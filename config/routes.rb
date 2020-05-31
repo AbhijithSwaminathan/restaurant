@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root :to => "manager#index", as: 'home'
 
-  get '/dishes/', to: "customer#index"
+  patch '/dish/:id/change', to: "dish#change", as:"change_dish"
 
   resources :worker
   resources :dish

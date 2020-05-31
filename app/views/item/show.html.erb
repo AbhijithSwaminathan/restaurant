@@ -1,3 +1,13 @@
-<h2><%= @items.name %></h2>
-<h4><%= @items.qty %></h4>
-<h4><%= @items.price %></h4>
+<div class="container m-4">
+  <div class="col-lg-4 d-flex align-items-stretch">
+    <div class="card mb-4" style="width: 18rem;">
+      <div class="card-body">
+        <h4 class="card-title"><%= @items.name %></h5>
+        <h5 class="display-6 m-2">Price: ₹<%= @items.price%> </h5>
+        <p class="card-text m-2">Quantity: <%= @items.qty %></p>
+        <%= link_to "Edit", edit_item_path(@items), class: 'btn btn-primary'%>
+        <%= link_to "Delete", item_path(@items),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+      </div>
+    </div>
+  </div>
+</div>

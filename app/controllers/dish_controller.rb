@@ -3,6 +3,7 @@ class DishController < ApplicationController
 
     def index
         @dishes = Dish.all
+        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers']
     end
 
     def new
@@ -43,8 +44,22 @@ class DishController < ApplicationController
         redirect_to dish_index_path
     end
 
+    def change
+        @dish = Dish.find(params[:id])
+        @dish.isavailable = !@dish.isavailable
+        if(@dish.update(dish_par))
+            redirect_to dish_index_path
+        else
+            render 'index'
+        end
+    end
+
     private def dish_params
-        params.require(:dish).permit(:name,  :price, :description, :image, :category)
+        params.require(:dish).permit(:name,  :price, :description, :image, :category, :isavailable)
+    end
+
+    private def dish_par
+        params.permit(:data)
     end
     
 end

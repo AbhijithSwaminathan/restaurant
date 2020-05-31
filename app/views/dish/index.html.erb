@@ -1,10 +1,37 @@
-<%= link_to "Add Dish", new_dish_path%>
-<h1>Dishes</h1>
-<% @dishes.each do |dish| %>
-  <h3> <%= dish.name %></h3>
-  <h4><%= dish.price %></h4>
-  <%= image_tag(dish.image) if dish.image.attached?%>
-  <p><%= dish.description %></p>
-  <%= link_to "Edit", edit_dish_path(dish), class: 'btn btn-default'%>
-  <%= link_to "Delete", dish_path(dish),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
-<% end %>
+<div class="d-flex justify-content-between">
+  <h2 class="display-4 p-4">Menu </h2>
+  <div class="p-4">
+    <%= link_to "Add Dish", new_dish_path,class: 'btn btn-primary p-4'%>
+  </div>
+</div>
+</div>
+<div class="container">
+  <% @cat.each do |cat| %>
+    <div class="jumbotron">
+      <h2 class="display-4"><%= cat%> </h2>
+      <div class="row">
+        <% @dishes.each do |dish| %>
+          <% if dish.category == cat %>
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="card mb-4" style="width: 18rem;">
+                <%= image_tag((dish.image) , class:"card-img-top" )%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= dish.name %></h5>
+                  <% if dish.isavailable?%>
+                    <%= link_to "Make Unavilabele", change_dish_path(dish),method: :patch, class:'btn btn-danger' %>
+                  <% else %>
+                    <%= link_to "Make Available", change_dish_path(dish),method: :patch, class:'btn btn-success' %>
+                  <%end%>
+                  <h5 class="display-6 m-2">₹<%= dish.price%> </h5>
+                  <p class="card-text m-2"><%= dish.description %></p>
+                  <%= link_to "Edit", edit_dish_path(dish), class: 'btn btn-primary'%>
+                  <%= link_to "Delete", dish_path(dish),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
