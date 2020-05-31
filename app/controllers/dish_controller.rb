@@ -3,12 +3,12 @@ class DishController < ApplicationController
 
     def index
         @dishes = Dish.all
-        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers']
+        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers','South Indian','Chinese','Thai','Spanish','Japanese','French','Desserts']
     end
 
     def new
         @dish = Dish.new
-        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers']
+        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers','South Indian','Chinese','Thai','Spanish','Japanese','French','Desserts']
     end
     
     
