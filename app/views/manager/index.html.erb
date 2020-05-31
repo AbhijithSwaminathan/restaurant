@@ -10,7 +10,8 @@
           <% if dish.category == cat %>
             <div class="col-lg-4 d-flex align-items-stretch">
               <div class="card" style="width: 18rem;">
-                <%= image_tag((dish.image) , class:"card-img-top" )%>
+                <%# <%= image_tag((dish.image) , class:"card-img-top" ) if dish.image.attached?%>
+                <%= image_tag('food.jpg' , class:"card-img-top" )%>
                 <div class="card-body">
                   <h5 class="card-title"><%= dish.name %></h5>
                   <p class="card-text"><%= dish.description %></p>
