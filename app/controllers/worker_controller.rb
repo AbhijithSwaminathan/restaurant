@@ -36,6 +36,13 @@ class WorkerController < ApplicationController
         end
     end
 
+    def destroy
+        @worker = Worker.find(params[:id])
+        @worker.destroy
+
+        redirect_to worker_index_path
+    end
+
     private def worker_params
         params.require(:worker).permit(:name,  :age, :address, :gender, :role, :wage)
     end

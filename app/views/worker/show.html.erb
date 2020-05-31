@@ -6,3 +6,4 @@
 <p><%= @workers.address %></p>
 <hr>
 <%= link_to "Edit", edit_worker_path(@workers), class:'btn btn-default'%>
+<%= link_to "Delete", worker_path(@workers),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>

@@ -1,7 +1,10 @@
+<%= link_to "Add Dish", new_dish_path%>
 <h1>Dishes</h1>
 <% @dishes.each do |dish| %>
   <h3> <%= dish.name %></h3>
   <h4><%= dish.price %></h4>
+  <%= image_tag(dish.image) if dish.image.attached?%>
   <p><%= dish.description %></p>
-  <%= link_to "Edit", edit_dish_path(dish), class: 'btn'%>
+  <%= link_to "Edit", edit_dish_path(dish), class: 'btn btn-default'%>
+  <%= link_to "Delete", dish_path(dish),method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
 <% end %>

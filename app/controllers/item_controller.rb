@@ -35,6 +35,13 @@ class ItemController < ApplicationController
         end
     end
 
+    def destroy
+        @item = Item.find(params[:id])
+        @item.destroy
+
+        redirect_to item_index_path
+    end
+
     private def item_params
         params.require(:item).permit(:name,  :qty, :price)
     end

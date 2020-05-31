@@ -18,6 +18,10 @@
     <%= f.text_field :description, class: 'form-control'%>
   </p>
   <p>
+    <%= f.label :category%><br>
+    <%= f.select :category, @cat%>
+  </p>
+  <p>
     <%= f.submit class:  'btn btn-primary' %>
   </p>
 <% end %>

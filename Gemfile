@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'clearance', '~> 1.15'
-gem 'solargraph', '~> 0.33'
+gem 'solargraph', '~> 0.39'
 gem 'htmlbeautifier'
 gem 'bootstrap-select-rails'
 

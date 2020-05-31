@@ -7,16 +7,16 @@ class DishController < ApplicationController
 
     def new
         @dish = Dish.new
+        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers']
     end
     
-    def show
-        redirect_to dish_path
-    end
+    
 
     def create
         @dish = Dish.new(dish_params)
+        @dish.isavailable = true
         if(@dish.save)
-            redirect_to :root
+            redirect_to dish_index_path
         else
             render 'new'
         end
@@ -24,6 +24,7 @@ class DishController < ApplicationController
 
     def edit
         @dish= Dish.find(params[:id])
+        @cat = ['Indian','Condinantal','Italian','Breads','Refreshers']
     end
 
     def update
@@ -35,8 +36,15 @@ class DishController < ApplicationController
         end
     end
 
+    def destroy
+        @dish = Dish.find(params[:id])
+        @dish.destroy
+
+        redirect_to dish_index_path
+    end
+
     private def dish_params
-        params.require(:dish).permit(:name,  :price, :description)
+        params.require(:dish).permit(:name,  :price, :description, :image, :category)
     end
     
 end

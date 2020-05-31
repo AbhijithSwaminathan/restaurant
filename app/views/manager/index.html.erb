@@ -1,1 +1,13 @@
-<h1>Index Page</h1>
+<h1>Dishes</h1>
+<% @cat.each do |cat| %>
+  <h2><%= cat%> </h2>
+  <% @dishes.each do |dish| %>
+    <% if dish.isavailable? %>
+      <% if dish.category == cat %>
+        <h3> <%= dish.name %></h3>
+        <h4><%= dish.price %></h4>
+        <p><%= dish.description %></p>
+      <%end%>
+    <%end%>
+  <% end %>
+<% end %>
